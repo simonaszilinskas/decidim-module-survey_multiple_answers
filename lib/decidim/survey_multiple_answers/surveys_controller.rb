@@ -9,11 +9,11 @@ module Decidim
       # rubocop:disable Metrics/PerceivedComplexity
       def self.prepended(base)
         base.class_eval do
+
           def allow_multiple_answers?
-            [
-              current_component.settings.try(:allow_multiple_answers?),
-              current_component.current_settings.try(:allow_multiple_answers?)
-            ].all?
+              global_setting = current_component.settings.try(:allow_multiple_answers?) || false
+              step_setting = current_component.current_settings.try(:allow_multiple_answers?) || false
+              global_setting && step_setting
           end
 
           # Public: return true if the current user (or session visitor) can answer the questionnaire
