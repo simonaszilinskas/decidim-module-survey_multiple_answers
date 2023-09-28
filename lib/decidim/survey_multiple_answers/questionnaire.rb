@@ -23,7 +23,7 @@ module Decidim
             [
               questionnaire_for.component.settings.try(:allow_multiple_answers?),
               questionnaire_for.component.current_settings.try(:allow_multiple_answers?)
-            ].any?
+            ].all?
           end
 
           private
