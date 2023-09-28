@@ -13,7 +13,7 @@ module Decidim
             [
               current_component.settings.try(:allow_multiple_answers?),
               current_component.current_settings.try(:allow_multiple_answers?)
-            ].any?
+            ].all?
           end
 
           # Public: return true if the current user (or session visitor) can answer the questionnaire
